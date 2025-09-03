@@ -28,32 +28,13 @@ module.exports.blogCreate = async (req, res) => {
 module.exports.deleteBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    const blog = await blogModule.findById(id);
-
-    if (!blog) {
-      return res.redirect("/clientHomepage");
-    }
-
-    // delete image from filesystem if it exists
-    if (blog.image) {
-      try {
-        fs.unlinkSync(blog.image);   // since you saved `req.file.path`
-        console.log("Image deleted:", blog.image);
-      } catch (err) {
-        console.error("Failed to delete image:", err.message);
-      }
-    }
-
-    // delete the DB record
     await blogModule.findByIdAndDelete(id);
-
     res.redirect("/clientHomepage");
   } catch (error) {
     console.log(error.message);
     res.redirect("/clientHomepage");
   }
 };
-
 
 module.exports.editBlog = async (req, res) => {
   try {

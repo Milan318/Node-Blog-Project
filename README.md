@@ -1,23 +1,23 @@
 # Blog Project
 
 ## Description
-A full-stack blogging application built with Node.js, Express, MongoDB, and EJS.
-It supports user authentication, blog post management, and image uploads, all while rendering dynamic content seamlessly.
+This is a blog project built using Node.js, Express, MongoDB, and EJS. The application allows users to register, log in, create, update, and delete blog posts with image uploads. Authentication is managed using cookies.
 
-##  Core Capabilities
-- 🔑 User authentication (Sign up & Login)
-- 🍪 Session handling with cookies
-- ✍️ Full blog CRUD (create, read, update, delete)
-- 🖼️ Image upload powered by Multer
-- 🔒 Protected routes (only logged-in users can post blogs)
-- 🎨 Dynamic views using EJS templating
+## Features
+- User authentication (Register & Login)
+- Session management using cookies
+- Blog CRUD operations
+- Image upload functionality using Multer
+- Protected routes for authenticated users
+- Dynamic content rendering with EJS
 
-## Tech Stack
-- Backend: Node.js, Express.js
-- Database: MongoDB + Mongoose
-- Templating Engine: EJS
-- File Handling: Multer
-- Session & Cookies: Cookie-Parser
+## Technologies Used
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- EJS (Embedded JavaScript)
+- Multer (for file uploads)
+- Cookie-Parser (for handling cookies)
 
 ## Installation
 
@@ -25,10 +25,21 @@ It supports user authentication, blog post management, and image uploads, all wh
    ```sh
    git clone https://github.com/your-repo/blog-project.git
    ```
-
-2. Open the application in your browser:
+2. Navigate to the project directory:
    ```sh
-   http://localhost:8081
+   cd blog-project
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   ```
+5. Open the application in your browser:
+   ```sh
+   http://localhost:3000
    ```
 
 ## Default Login Credentials
@@ -69,22 +80,38 @@ blog-project/
 │── package.json
 │── package-lock.json
 ```
-## screenshot
-1. Home Page
-<img width="1882" height="861" alt="image" src="https://github.com/user-attachments/assets/2e244524-8441-4630-a017-ed75a13c98d0" />
-2. Login Page
-   <img width="1661" height="825" alt="image" src="https://github.com/user-attachments/assets/7de7cc50-19ae-4c22-91af-ec4e562b496d" />
-3. Add Blog Page
-   <img width="1794" height="834" alt="image" src="https://github.com/user-attachments/assets/251bbf39-63e2-492f-98f4-1184e06e0730" />
-4. View Page
-   <img width="1802" height="750" alt="image" src="https://github.com/user-attachments/assets/a3a91fc7-7999-4728-bdf6-b206efd295f3" />
 
+## API Routes
 
+### Authentication
+- **POST** `/registerUser` - Register a new user
+- **POST** `/checkLogin` - User login
 
+### Blog Operations
+- **GET** `/clientHomepage` - View all blogs
+- **GET** `/formPage` - View blog creation form (protected route)
+- **POST** `/formPage` - Create a new blog post
+- **GET** `/delete/:id` - Delete a blog post
+- **GET** `/edit/:id` - View edit form
+- **POST** `/update/:id` - Update blog post
+- **GET** `/view/:id` - View single blog post
 
+## Screenshots
 
+*1.Home Page*
+![HomePage](https://github.com/user-attachments/assets/da95a93d-0d39-48ac-a439-94b05aa39b1f)
 
+*2.Login Page*
+![LoginPage](https://github.com/user-attachments/assets/3c964d8a-e269-491b-8689-a4211c34da13)
 
+*3.Blog Creation Form Page*
+![Blog Creation](https://github.com/user-attachments/assets/810bbe00-9a44-4d7d-b911-7749e2ba372f)
+
+*4.Edit Blog Form Page*
+![Edit Blog](https://github.com/user-attachments/assets/97eb2a9c-2155-48dd-9847-ba33eec266d9)
+
+*5.View Blog*
+![View Blog](https://github.com/user-attachments/assets/524451bc-97ec-4c4f-886b-42a6f17cc1aa)
 
 
 
