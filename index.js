@@ -1,17 +1,28 @@
-const bodyParser = require('body-parser');
-require('dotenv').config();
-const db = require('./configs/database');
-const express = require('express');
+const express = require("express");
+const db = require("./configs/database");
+const indexRouter = require("./router/indexRouter");
+const redirectMiddleware = require("./middleware/redirectMiddleware");
+
+
+const cookieParser = require('cookie-parser');
+
+const port = 8089;
 const app = express();
-const port = 8081;
 
-app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended:true}));
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use(express.static("public"));
 
-app.listen(port,(error)=>{
-    if(!error){
-        db();
-        console.log("server stared");
-        console.log(`http://localhost:${port}`);
-    }
-})
+
+app.use(cookieParser());
+
+app.use(redirectMiddleware);
+app.use("/", indexRouter);
+
+app.listen(port, (err) => {
+  if (!err) {
+    db();
+    console.log("server runs on\nhttp://localhost:" + port);
+  }
+});
