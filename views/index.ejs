@@ -20,21 +20,34 @@
               <p><%= blog.username%></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-
-                  <a type="button" href="/view/<%= blog.id%>" class="btn btn-sm btn-outline-primary">
-                    View
+                  <a
+                    type="button"
+                    href="/view/<%= blog.id%>"
+                    class="btn btn-sm btn-outline-primary"
+                  >
+                    <i class="bi bi-binoculars-fill"></i>
                   </a>
 
-                  <a type="button" href="/edit/<%= blog.id%>" class="btn btn-sm btn-outline-warning">
-                    Edit
+                  <a
+                    type="button"
+                    href="/edit/<%= blog.id%>"
+                    class="btn btn-sm btn-outline-warning"
+                  >
+                    <i class="bi bi-pencil-fill"></i>
                   </a>
 
-                  <a type="button" href="/delete/<%= blog.id%>" class="btn btn-sm btn-outline-danger">
-                    Delete
+                  <a
+                    type="button"
+                    href="/delete/<%= blog.id%>"
+                    class="btn btn-sm btn-outline-danger"
+                  >
+                    <i class="bi bi-trash3-fill"></i>
                   </a>
-
                 </div>
-                <small class="text-body-secondary"><%= new Date(blog.createdAt).toLocaleString("en-US") %> </small>
+                <small class="text-body-secondary">
+                  <%= new Date(blog.createdAt).toLocaleDateString("en-US", {
+                  year: "numeric", month: "long", day: "numeric" }) %>
+                </small>
               </div>
             </div>
           </div>
@@ -45,4 +58,3 @@
   </div>
 </main>
 
-<%- include("./partials/footer.ejs")%>
